@@ -12,6 +12,11 @@ pipeline {
                     git branch: 'main', url: 'https://github.com/SkHussainnn/java-web-project.git'
                 }
             }
+            stage("Build Code"){
+                steps{
+                    sh 'mvn clean package'
+                }
+            }
         }
     }
 }
