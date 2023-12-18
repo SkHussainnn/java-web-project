@@ -10,7 +10,7 @@ pipeline {
             steps {
                 script {
                     echo "checkout code started"
-                    checkout([$class: 'GitSCM', branches: [[name: 'main']], userRemoteConfigs: [[url: 'https://github.com/SkHussainnn/java-web-project.git']]])
+                    git branch: 'main', url: 'https://github.com/SkHussainnn/java-web-project.git'
                     echo "checkout completed"
                 }
             }
@@ -28,7 +28,7 @@ pipeline {
             steps {
                 script {
                     echo "Deployment started"
-                    deploy adapters: [tomcat9(url: 'http://54.254.139.235:8080/', credentialsId: 'deployer')], war: 'target/*.war'
+                    deploy adapters: [tomcat9(url: '//http://18.142.254.53:8080/', credentialsId: 'tomcred')], war: 'target/*.war'
                     echo "Deployment completed"
                 }
             }
